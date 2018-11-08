@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder ".", "/home/vagrant/flaskmqtt"
+  config.vm.synced_folder ".", "/home/vagrant/mqttflask"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -53,7 +53,7 @@ Vagrant.configure("2") do |config|
     # Display the VirtualBox GUI when booting the machine
     vb.gui = false
 
-    vb.name = "flask-mqtt-box"
+    vb.name = "mqtt-flask-box"
 
     vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     vb.customize ['modifyvm', :id, '--cableconnected1', 'on']

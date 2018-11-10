@@ -1,6 +1,6 @@
 from mqttflask import app
-from mqttflask.controllers.HomeController import HomeController
-from mqttflask.resources.mqtt import Mqtt
+from flask import render_template
 
 @app.route('/')
-HomeController.index()
+def index():
+    return render_template('app.html')

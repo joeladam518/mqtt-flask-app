@@ -53,7 +53,7 @@ Vagrant.configure("2") do |config|
     # Display the VirtualBox GUI when booting the machine
     vb.gui = false
 
-    vb.name = "mqtt-flask-box"
+    vb.name = "mqttflask-box"
 
     vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     vb.customize ['modifyvm', :id, '--cableconnected1', 'on']

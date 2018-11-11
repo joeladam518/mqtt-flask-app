@@ -6,7 +6,7 @@ from flask_restful import Api
 from controllers.home import HomeController
 from controllers.mqtt import MqttController
 
-app_root = os.path.join(os.path.dirname(__file__))
+app_root = os.path.dirname(__file__)
 dotenv_path = os.path.join(app_root, '.env')
 flask_cli.load_dotenv(dotenv_path)
 

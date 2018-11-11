@@ -30,7 +30,7 @@ msg_c() { # Output messages in color! :-)
 }
 
 ## Variables
-path_to_dir="/home/vagrant/mqttflask"
+path_to_dir="${HOME}/mqttflask"
 
 ## mysql variables
 # db_root_pass="secret"
@@ -49,9 +49,9 @@ echo ""
 
 
 echo ""
-msg_c -c "Fix the UTC time."
+msg_c -c "Update and Upgrade"
 #----------------------------------------------
-sudo apt-get install -y vim git tree htop tmux ntp ntpdate
+cd ${HOME} && sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y
 #----------------------------------------------
 msg_c -c "done!..."
 echo ""
@@ -89,17 +89,34 @@ fi
 
 
 echo ""
+msg_c -c "Install Basic Packages."
+#----------------------------------------------
+cd ${HOME} && sudo apt-get install -y vim git tree htop tmux ntp ntpdate
+#----------------------------------------------
+msg_c -c "done!..."
+echo ""
+
+
+echo ""
+msg_c -c "Install nginx"
+#----------------------------------------------
+cd ${HOME} && sudo apt-get install -y nginx
+#----------------------------------------------
+msg_c -c "done!..."
+echo ""
+
+
+echo ""
 msg_c -c "Installing any needed apt-get packages."
 #----------------------------------------------
-
 if ! foobar_loc="$(type -p "unzip")" || [ -z "unzip" ]; then
     msg_c -a "Installing unzip"
     sudo apt-get -y install unzip
 fi
-
 #----------------------------------------------
 msg_c -c "done!..."
 echo ""
+
 
 
 echo ""
@@ -135,20 +152,21 @@ echo ""
 msg_c -c "Setup the python venv"
 #----------------------------------------------
 cd ${path_to_dir} && python3 -m venv flaskenv
-cd ${path_to_dir} && source flaskenv/bin/activate
+cd ${path_to_dir} && source ./flaskenv/bin/activate
 #----------------------------------------------
 msg_c -c "done!..."
 echo ""
 
 
-echo ""
-msg_c -c "install python dependencies"
-#----------------------------------------------
-pip install wheel
-pip install uwsgi flask
-#----------------------------------------------
-msg_c -c "done!..."
-echo ""
+# echo ""
+# msg_c -c "install python dependencies"
+# #----------------------------------------------
+# pip install wheel
+# pip install uwsgi flask flask_restful
+# pip install -U python-dotenv
+# #----------------------------------------------
+# msg_c -c "done!..."
+# echo ""
 
 
 # echo ""

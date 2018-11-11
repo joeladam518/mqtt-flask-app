@@ -1,19 +1,18 @@
 from setuptools import setup
 
 setup(
-    name = 'mqtt-flask-app',
+    name = 'mqttflask_app',
     version = '0.1',
-    description = 'MQTT Flask app',
-    url = 'https://github.com/joeladam518/mqtt-flask-app.git',
-    author = 'Joel Haker',
-    author_email = 'joeladam@gmail.com',
-    license = 'MIT',
-    packages = [
-        'mqttflask',
-    ],
+    packages = [ 'site' ],
     install_requires = [
+        'wheel',
+        'uwsgi',
         'flask',
         'flask_restful',
+        'python_dotenv',
+        'click',
+        'simplejson'
     ],
-    zip_safe = False
+    license = 'MIT',
+    description = 'A website',
 )

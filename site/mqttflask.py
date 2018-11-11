@@ -10,7 +10,7 @@ app_root = os.path.join(os.path.dirname(__file__))
 dotenv_path = os.path.join(app_root, '.env')
 flask_cli.load_dotenv(dotenv_path)
 
-app = Flask(__name__, static_folder='assets', root_path=app_root)
+app = Flask(__name__, static_folder='assets', template_folder="resources/templates", root_path=app_root)
 app.testing = True
 
 api = Api(app)

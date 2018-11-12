@@ -1,7 +1,7 @@
 import os
 from flask import Flask, cli as flask_cli
 from flask_restful import Api
-from config import config as application_config
+from mqttflask_config import Config as mqttflask_config
 from controllers.home import HomeController
 from controllers.mqtt import MqttController
 
@@ -10,7 +10,7 @@ dotenv_path = os.path.join(app_root, '.env')
 flask_cli.load_dotenv(dotenv_path)
 
 app = Flask(__name__, static_folder='assets', template_folder="resources/templates", root_path=app_root)
-app.config.from_object(application_config)
+app.config.from_object(mqttflask_config)
 api = Api(app)
 
 # Regular route that renders a web page

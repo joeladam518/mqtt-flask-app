@@ -11,8 +11,6 @@ dotenv_path = os.path.join(app_root, '.env')
 flask_cli.load_dotenv(dotenv_path)
 
 app = Flask(__name__, static_folder='assets', template_folder="resources/templates", root_path=app_root)
-app.testing = True
-
 api = Api(app)
 
 # Regular route that renders a web page

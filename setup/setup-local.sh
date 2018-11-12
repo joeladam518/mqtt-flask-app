@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+## Variables
+path_to_dir="${HOME}/mqttflask"
+
 ## Functions
 msg_c() { # Output messages in color! :-)
     local OPTIND=1; local o; local newline="1"; local CHOSEN_COLOR; local RESET=$(tput sgr0);
@@ -29,16 +32,6 @@ msg_c() { # Output messages in color! :-)
     fi
 }
 
-## Variables
-path_to_dir="${HOME}/mqttflask"
-
-## mysql variables
-# db_root_pass="secret"
-# db_name="homestead"
-# db_user="homestead"
-# db_pass="secret"
-
-####################################################################################################
 ####################################################################################################
 
 echo ""
@@ -56,8 +49,10 @@ cd ${HOME} && sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get aut
 msg_c -c "done!..."
 echo ""
 
-
-if [ ! -d "$HOME"/repos ]; then
+echo ""
+msg_c -c "Installing your bashrc and vimrc"
+#----------------------------------------------
+if [ ! -d "${HOME}/repos" ]; then
     echo ""
     msg_c -c "Creating the repos directory in the home folder"
     #----------------------------------------------
@@ -67,31 +62,34 @@ if [ ! -d "$HOME"/repos ]; then
     echo ""
 fi
 
-if [ ! -f "$HOME"/repos/myvimrc/.vimrc ]; then
+if [ ! -f "${HOME}/repos/myvimrc/.vimrc" ]; then
     echo ""
     msg_c -c "Cloning the joeladam518/myvimrc github repo"
     #----------------------------------------------
-    cd "$HOME"/repos && git clone "https://github.com/joeladam518/myvimrc.git"
+    cd "${HOME}/repos" && git clone "https://github.com/joeladam518/myvimrc.git"
     #----------------------------------------------
     msg_c -c "done!..."
     echo ""
 fi
 
-if [[ ! -f "$HOME"/.bashrc.old && -f "$HOME"/.bashrc ]]; then
+if [[ ! -f "${HOME}/.bashrc.old" && -f "${HOME}/.bashrc" ]]; then
     echo ""
     msg_c -c "Cloning the joeladam518/mybashrc github repo"
     #----------------------------------------------
-    cd "$HOME"/repos && git clone "https://github.com/joeladam518/mybashrc.git"
+    cd "${HOME}/repos" && git clone "https://github.com/joeladam518/mybashrc.git"
     #----------------------------------------------
     msg_c -c "done!..."
     echo ""
 fi
+#----------------------------------------------
+msg_c -c "done!..."
+echo ""
 
 
 echo ""
-msg_c -c "Install Basic Packages."
+msg_c -c "Install Some Basic Packages."
 #----------------------------------------------
-cd ${HOME} && sudo apt-get install -y vim git tree htop tmux ntp ntpdate
+cd "${HOME}" && sudo apt-get install -y vim git tree htop tmux ntp ntpdate
 #----------------------------------------------
 msg_c -c "done!..."
 echo ""
@@ -100,23 +98,10 @@ echo ""
 echo ""
 msg_c -c "Install nginx"
 #----------------------------------------------
-cd ${HOME} && sudo apt-get install -y nginx
+cd "${HOME}" && sudo apt-get install -y nginx
 #----------------------------------------------
 msg_c -c "done!..."
 echo ""
-
-
-echo ""
-msg_c -c "Installing any needed apt-get packages."
-#----------------------------------------------
-if ! foobar_loc="$(type -p "unzip")" || [ -z "unzip" ]; then
-    msg_c -a "Installing unzip"
-    sudo apt-get -y install unzip
-fi
-#----------------------------------------------
-msg_c -c "done!..."
-echo ""
-
 
 
 echo ""
@@ -133,7 +118,7 @@ echo ""
 echo ""
 msg_c -c "Install python needs"
 #----------------------------------------------
-sudo apt-get install -y python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
+cd "${HOME}" && sudo apt-get install -y python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools
 #----------------------------------------------
 msg_c -c "done!..."
 echo ""
@@ -142,7 +127,7 @@ echo ""
 echo ""
 msg_c -c "Install python virtual env"
 #----------------------------------------------
-sudo apt install python3-venv
+cd "${HOME}" && sudo apt-get install -y python3-venv
 #----------------------------------------------
 msg_c -c "done!..."
 echo ""
@@ -151,12 +136,10 @@ echo ""
 echo ""
 msg_c -c "Setup the python venv"
 #----------------------------------------------
-cd ${path_to_dir} && python3 -m venv flaskenv
-cd ${path_to_dir} && source ./flaskenv/bin/activate
+cd "${path_to_dir}" && python3 -m venv flaskenv
 #----------------------------------------------
 msg_c -c "done!..."
 echo ""
-
 
 # echo ""
 # msg_c -c "install python dependencies"
@@ -189,6 +172,6 @@ echo ""
 
 echo ""
 echo ""
-msg_c -c "You're local development environment is now provisioned."
+msg_c -b "You're local development environment is now provisioned."
 echo ""
 echo ""

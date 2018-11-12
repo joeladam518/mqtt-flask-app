@@ -1,21 +1,18 @@
-import os
-from dotenv import load_dotenv
 from setuptools import setup
-
-dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
-load_dotenv(dotenv_path)
 
 setup(
     name = 'mqttflask_app',
-    version = os.getenv('VERSION'),
+    version = '0.1',
     packages = [ 'site' ],
     install_requires = [
         'wheel',
         'uwsgi',
         'flask',
         'flask_restful',
+        'flask_httpauth',
         'python_dotenv',
-        'simplejson'
+        'simplejson',
+        'paho-mqtt',
     ],
     license = 'MIT',
     description = 'A website for messing around with mqtt',

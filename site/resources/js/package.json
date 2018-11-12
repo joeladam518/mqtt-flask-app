@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build && npm run cleanup",
+    "cleanup": "node bin/cleanup.js",
+    "serve": "vue-cli-service serve"
   },
   "dependencies": {
     "vue": "^2.5.17",

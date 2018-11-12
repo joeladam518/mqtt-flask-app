@@ -1,14 +1,14 @@
-path = require('path')
+var path = require('path');
 
-current_dir = path.resolve(__dirname);
-site_dir = path.resolve(current_dir, '../../');
-assets_dir = path.resolve(site_dir, 'assets/');
-build_dir = path.resolve(assets_dir, 'build/');
+var current_dir = path.resolve(__dirname);
+var site_dir    = path.resolve(current_dir, '../../');
+var dist_dir   = path.resolve(site_dir, 'dist/');
+var assets_dir  = path.resolve(site_dir, 'assets/');
 
 module.exports = {
     baseUrl: '/',
-    outputDir: build_dir,
-    assetsDir: '../',
+    outputDir: dist_dir,
+    assetsDir: '../assets/',
     filenameHashing: false,
     lintOnSave: false,
     css: {
@@ -26,10 +26,12 @@ module.exports = {
         // plugins can access these options as
         // `options.pluginOptions.foo`.
     },
-    // delete HTML related webpack plugins
     chainWebpack: config => {
+        // delete HTML related webpack plugins
         config.plugins.delete('html')
         config.plugins.delete('preload')
         config.plugins.delete('prefetch')
+        // Set aliases
+        config.resolve.alias.set("@public_assets", assets_dir);
     },
-}
+};

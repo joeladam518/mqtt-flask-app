@@ -2,17 +2,18 @@ var path = require('path');
 
 var current_dir = path.resolve(__dirname);
 var site_dir    = path.resolve(current_dir, '../../');
-var dist_dir   = path.resolve(site_dir, 'dist/');
 var assets_dir  = path.resolve(site_dir, 'assets/');
+var js_dir   = path.resolve(assets_dir, 'js/');
 
 module.exports = {
     baseUrl: '/',
-    outputDir: dist_dir,
-    assetsDir: '../assets/',
+    outputDir: js_dir,
+    assetsDir: '../',
     filenameHashing: false,
     lintOnSave: false,
     css: {
         extract: true,
+        sourceMap: true,
         loaderOptions: {
             css: {
                 // options here will be passed to css-loader
@@ -31,6 +32,7 @@ module.exports = {
         config.plugins.delete('html')
         config.plugins.delete('preload')
         config.plugins.delete('prefetch')
+        config.optimization.delete('splitChunks')
         // Set aliases
         config.resolve.alias.set("@public_assets", assets_dir);
     },

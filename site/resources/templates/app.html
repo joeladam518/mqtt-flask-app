@@ -12,81 +12,28 @@
     <meta name="author" content="SitePoint">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/app.css?v=1.0">
+    <link rel="stylesheet" href="assets/css/global.css?v={{ css_version }}">
+    <link rel="stylesheet" href="assets/css/app.css?v={{ css_version }}">
 </head>
 
 <body>
-    <header id="header">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="/">Mqtt Flask</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Kiss My Butt</a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Your Mom <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">
-                                    Led Xmas Tree
-                                </a>
-
-                                <a class="dropdown-item" href="#">
-                                    Lamps
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
+    <div id="app">
+        <header id="header">
+            <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+                <div class="container">
+                    <a class="navbar-brand" href="/">Mqtt Flask</a>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
-    <main id="main">
-        <div id="app" class="container">
-            <h1>Control HQ</h1>
-
-            <section class="controller-section">
-                <div class="controller-area">
-                    <div class="contoller-header">
-                        <h3>The little led tree</h3>
-                    </div>
-
-                    <div class="section-body">
-                        This is where you would put the button to control little led tree's leds
-                    </div>
-                </div>
-
-                <div class="controller-area">
-                    <div class="contoller-header">
-                        <h3>My lamps</h3>
-                    </div>
-
-                    <div class="section-body">
-                        Control my lights
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <footer id="footer">
-
-    </footer>
+        <main id="main">
+            <app></app>
+        </main>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="assets/js/dist/scripts.js?v=1.0"></script>
+    <script src="assets/js/app.js?v={{ js_version }}"></script>
 </body>
 </html>

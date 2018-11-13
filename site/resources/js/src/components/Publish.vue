@@ -17,7 +17,7 @@
                     </label>
 
                     <div class="col-md-8">
-                        <input type="text" class="form-control" id="topic" name="topic" required autofocus>
+                        <input type="text" class="form-control" id="topic" name="topic" v-model="topic" required autofocus>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@
                     </label>
 
                     <div class="col-md-8">
-                        <textarea class="form-control" id="payload" name="payload" required></textarea>
+                        <textarea class="form-control" id="payload" name="payload" v-model="payload" required></textarea>
                     </div>
                 </div>
 
@@ -60,7 +60,8 @@ export default {
 
     data() {
         return {
-            //
+            topic: '',
+            payload: '',
         }
     },
 
@@ -81,12 +82,22 @@ export default {
     updated() {},
 
     methods: {
-        mqttPublishTopic() {
+        mqttPublishTopic(event) {
             console.log('publish!')
+            console.log('topic: ', this.topic);
+            console.log('payload: ', this.payload)
+
+            this.$mqtt.publish(this.topic, this.payload)
+
+            this.clearInputs();
         },
         toggleCardBody() {
             this.showCardBody = !this.showCardBody;
         },
+        clearInputs() {
+            this.topic = '';
+            this.payload = '';
+        }
     },
 }
 </script>

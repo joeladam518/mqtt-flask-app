@@ -6,7 +6,7 @@ import VueMqttOptions from './VueMqttOptions.js';
 
 Vue.config.productionTip = false
 
-Vue.use(VueMqtt, 'mqtt://192.168.1.23', options);
+Vue.use(VueMqtt, 'ws://192.168.1.23:9001', VueMqttOptions);
 
 const app = new Vue({
     el: '#app',
@@ -27,7 +27,10 @@ const app = new Vue({
 
     beforeMount() {},
 
-    mounted() {},
+    mounted() {
+        //this.$mqtt.subscribe('VueMqtt/#')
+        this.$mqtt.subscribe(['tw1', 'tw2'])
+    },
 
     beforeUpdate() {},
 

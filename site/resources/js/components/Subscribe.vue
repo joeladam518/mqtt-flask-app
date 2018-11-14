@@ -17,7 +17,7 @@
                     </label>
 
                     <div class="col-md-8" >
-                        <input type="text" class="form-control" id="topic" name="topic" required autofocus>
+                        <input type="text" class="form-control" id="topic" name="topic" v-model="topic" required autofocus>
                     </div>
                 </div>
 
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
     name: 'subscribe',
 
@@ -40,7 +41,7 @@ export default {
     },
 
     props: {
-        showCardBody: {
+        showThis: {
             type: Boolean,
             default() {
                 return true
@@ -50,7 +51,8 @@ export default {
 
     data() {
         return {
-            //
+            topic: '',
+            showCardBody: this.showThis,
         }
     },
 
@@ -71,12 +73,19 @@ export default {
     updated() {},
 
     methods: {
-        mqttSubscribeTopic() {
-            console.log('subscribe!')
-        },
+        ...mapMutations([
+            'subscribe'
+        ]),
         toggleCardBody() {
             this.showCardBody = !this.showCardBody;
         },
+        mqttSubscribeTopic() {
+            this.subscribe(this.topic);
+            this.clearInputs();
+        },
+        clearInputs() {
+            this.topic = '';
+        }
     },
 }
 </script>

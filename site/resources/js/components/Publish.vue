@@ -1,4 +1,4 @@
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+    <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
 </style>
@@ -50,7 +50,7 @@ export default {
     },
 
     props: {
-        showCardBody: {
+        showThis: {
             type: Boolean,
             default() {
                 return true
@@ -62,6 +62,7 @@ export default {
         return {
             topic: '',
             payload: '',
+            showCardBody: this.showThis,
         }
     },
 

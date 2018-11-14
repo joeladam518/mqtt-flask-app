@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="application-name" content="Mqtt Flask">
+    <meta name="description" content="Mqtt, Vue, & Flask - The way I controll everything">
+
+    <title>Mqtt, Vue, and Flask</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="assets/css/app.css?v={{ css_version }}">
+</head>
+
+<body>
+    <div id="app">
+        <header id="header">
+            <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+                <div class="container">
+                    <a class="navbar-brand" href="/">Mqtt, Vue, & Flask</a>
+                </div>
+            </nav>
+        </header>
+
+        <main id="main">
+            <main-vue></main-vue>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js?v={{ js_version }}"></script>
+</body>
+</html>

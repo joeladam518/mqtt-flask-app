@@ -1,0 +1,14 @@
+[Unit]
+Description=uWSGI instance to serve mqttflask
+After=network.target
+
+[Service]
+User=vagrant
+Group=www-data
+WorkingDirectory=/home/vagrant/mqttflask
+Environment="PATH=/home/vagrant/mqttflask/flaskenv/bin"
+ExecStartPre=/home/vagrant/mqttflask/bin/createtmpdirs.sh
+ExecStart=/home/vagrant/mqttflask/flaskenv/bin/uwsgi --ini mqttflask.ini
+
+[Install]
+WantedBy=multi-user.target

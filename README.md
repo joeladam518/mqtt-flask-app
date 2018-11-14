@@ -1,2 +1,2 @@
-# mqtt-flask-app
-A flask app to translate a http rest request to a mqtt publish command
+# mqttflask
+A flask app to translate an http request to an mqtt publish command

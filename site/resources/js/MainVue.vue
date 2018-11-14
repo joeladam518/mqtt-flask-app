@@ -16,12 +16,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-lg-6">
-                <publish :showCardBody="showForms"></publish>
-                <subscribe :showCardBody="showForms"></subscribe>
-                <unsubscribe :showCardBody="showForms"></unsubscribe>
+                <publish :showThis="showForms"></publish>
+                <subscribe :showThis="showForms"></subscribe>
             </div>
             <div class="col-md-12 col-lg-6">
-                <monitor></monitor>
+                <show-subscribed-topics></show-subscribed-topics>
+                <monitor-subscribed-topics></monitor-subscribed-topics>
             </div>
         </div>
     </div>
@@ -30,17 +30,17 @@
 <script>
 import Publish from './components/Publish.vue'
 import Subscribe from './components/Subscribe.vue'
-import UnSubscribe from './components/UnSubscribe.vue'
-import Monitor from './components/Monitor.vue'
+import ShowSubscribedTopics from './components/ShowSubscribedTopics.vue'
+import MonitorSubscribedTopics from './components/MonitorSubscribedTopics.vue'
 
 export default {
-    name: 'app',
+    name: 'main-vue',
 
     components: {
         'subscribe': Subscribe,
-        'unsubscribe': UnSubscribe,
         'publish': Publish,
-        'monitor': Monitor,
+        'show-subscribed-topics': ShowSubscribedTopics,
+        'monitor-subscribed-topics': MonitorSubscribedTopics,
     },
 
     data() {

@@ -5,25 +5,25 @@
 
 <template>
     <div class="card subscribe-section">
-        <div @click="toggleCardBody" class="card-header">
-            unsubscribe from mqtt topics
+        <div @click="toggleCardBody" class="card-header" >
+            subscribe to mqtt topics
         </div>
         <div v-show="showCardBody" class="card-body">
-            <form id="mqtt-unsubscribe-topic-form" class="mqtt-form" action="#" method="POST" @submit.stop.prevent="mqttUnSubscribeTopic">
+            <form id="mqtt-subscribe-topic-form" class="mqtt-form" action="#" method="POST" @submit.stop.prevent="mqttSubscribeTopic">
 
                 <div class="form-group row">
                     <label for="topic" class="col-md-4 col-form-label text-md-right">
                         Topic
                     </label>
 
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" id="topic" name="topic" required autofocus>
+                    <div class="col-md-8" >
+                        <input type="text" class="form-control" id="topic" name="topic" v-model="topic" required autofocus>
                     </div>
                 </div>
 
                 <div class="form-group row mb-0 submit-wrap">
                     <button type="submit" class="btn btn-primary">
-                        unsubscribe
+                        subscribe
                     </button>
                 </div>
             </form>
@@ -32,15 +32,16 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
-    name: 'unsubscribe',
+    name: 'subscribe',
 
     components: {
 
     },
 
     props: {
-        showCardBody: {
+        showThis: {
             type: Boolean,
             default() {
                 return true
@@ -50,7 +51,8 @@ export default {
 
     data() {
         return {
-            //
+            topic: '',
+            showCardBody: this.showThis,
         }
     },
 
@@ -71,12 +73,19 @@ export default {
     updated() {},
 
     methods: {
-        mqttUnSubscribeTopic() {
-            console.log('unsubscribe!')
-        },
+        ...mapMutations([
+            'subscribe'
+        ]),
         toggleCardBody() {
             this.showCardBody = !this.showCardBody;
         },
+        mqttSubscribeTopic() {
+            this.subscribe(this.topic);
+            this.clearInputs();
+        },
+        clearInputs() {
+            this.topic = '';
+        }
     },
 }
 </script>

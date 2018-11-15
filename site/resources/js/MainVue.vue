@@ -16,8 +16,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-lg-6">
-                <publish :showThis="showForms"></publish>
                 <subscribe :showThis="showForms"></subscribe>
+                <publish :showThis="showForms"></publish>
             </div>
             <div class="col-md-12 col-lg-6">
                 <show-subscribed-topics></show-subscribed-topics>

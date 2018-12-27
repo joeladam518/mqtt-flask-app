@@ -1,5 +1,5 @@
 import os
-from flask import Flask, cli as flask_cli
+from flask import Flask, cli as flask_cli, request
 from flask_restful import Api
 from mqttflask_config import Config as mqttflask_config
 from controllers.home import HomeController
@@ -17,7 +17,14 @@ api = Api(app)
 app.add_url_rule('/', view_func=HomeController.as_view('home_page'))
 
 # Api route to post and get mqtt messages
-api.add_resource(MqttController, '/mqtt', '/mqtt/<string:topic>')
+#api.add_resource(MqttController, '/mqtt', '/mqtt/<string:topic>')
+api.add_resource(MqttController, '/mqtt')
+
+@app.route('/bob', methods=['POST'])
+def bob():
+    print(request.form)
+    exit()
+
 
 if __name__ == "__main__":
     app.run()

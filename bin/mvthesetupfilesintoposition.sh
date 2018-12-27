@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## Variables
-path_to_dir="${HOME}/mqttflask"
+path_to_dir="/var/www/mqttflask"
 
 ## Functions
 msg_c() { # Output messages in color! :-)
@@ -45,7 +45,7 @@ msg_c -c "Move the nginx config file into position"
 #----------------------------------------------
 if [ -f "${path_to_dir}/setup/mqttflask.nginx.conf" ]; then
     if [ -d "/etc/nginx/sites-available/" ]; then
-        sudo cp "${path_to_dir}/setup/mqttflask.nginx.conf" "/etc/nginx/"
+        sudo cp "${path_to_dir}/setup/mqttflask.nginx.conf" "/etc/nginx/sites-available/mqttflask/"
     else
         msg_c -r "It seems like nginx is not installed..."
     fi

@@ -5,4 +5,4 @@ if [ ! -d "/tmp/mqttflask" ]; then
 fi
 
 /bin/chmod -R 770 /tmp/mqttflask
-/bin/chown -R vagrant:www-data /tmp/mqttflask
+/bin/chown -R pi:www-data /tmp/mqttflask

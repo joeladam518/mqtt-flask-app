@@ -17,14 +17,7 @@ api = Api(app)
 app.add_url_rule('/', view_func=HomeController.as_view('home_page'))
 
 # Api route to post and get mqtt messages
-#api.add_resource(MqttController, '/mqtt', '/mqtt/<string:topic>')
-api.add_resource(MqttController, '/mqtt')
-
-@app.route('/bob', methods=['POST'])
-def bob():
-    print(request.form)
-    exit()
-
+api.add_resource(MqttController, '/mqtt', '/mqtt/<string:topic>')
 
 if __name__ == "__main__":
     app.run()

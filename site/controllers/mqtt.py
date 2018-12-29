@@ -20,6 +20,11 @@ class MqttController(Resource):
 
     @auth.login_required
     def post(self):
+        if os.getenv('MQTT_ENDPOINT_DISABLED') == True:
+            return {
+                "message": "Endpoint disabled",
+            }, 200
+
         parser = reqparse.RequestParser()
         parser.add_argument('topic', required=True, default='', location='form', help='No topic.')
         parser.add_argument('message', required=True, default='', location='form', help='No payload.')

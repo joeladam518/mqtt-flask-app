@@ -49,7 +49,7 @@ class MqttController(Resource):
         args = parser.parse_args()
 
         topic = str(args['topic'])
-        mesage = str(args['message'])
+        message = str(args['message'])
 
         """
             mqtt.publish.single(topic, payload=None, qos=0, retain=False, hostname="localhost",
@@ -61,7 +61,7 @@ class MqttController(Resource):
         return {
             'status': 'success',
             'messages': [
-                "The topic: \"{}\"".format(topic),
-                "The payload: \"{}\"".format(message),
+                'The topic submitted: "{}"'.format(topic),
+                'The payload submitted: "{}"'.format(message),
             ]
         }, 200

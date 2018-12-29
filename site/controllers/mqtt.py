@@ -36,8 +36,8 @@ class MqttController(Resource):
         # message = request.form.get('message')
 
         parser = reqparse.RequestParser()
-        parser.add_argument('topic', required=True, location='form', help='No Topic', nullable=False)
-        parser.add_argument('message', required=True, location='form', help='No Payload', nullable=False)
+        parser.add_argument('topic', required=True, location='form', help='No Topic')
+        parser.add_argument('message', required=True, location='form', help='No Payload')
         args = parser.parse_args()
 
         topic = str(args['topic'])
@@ -47,7 +47,7 @@ class MqttController(Resource):
             return {
                 'status': 'error',
                 'messages': [
-                    'No topic and/or No message'
+                    'No topic and/or No Payload'
                 ],
             }, 422
 

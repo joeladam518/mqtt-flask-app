@@ -57,14 +57,14 @@ export default {
 
     updated() {},
 
-    mqtt: {
-        'tw1' (data) {
-            this.receive_message('tw1: ' + data)
-        },
-        'tw2' (data) {
-            this.receive_message('tw2: ' + data)
-        },
-    },
+    // mqtt: {
+    //     'tw1' (data) {
+    //         this.receive_message('tw1: ' + data)
+    //     },
+    //     'tw2' (data) {
+    //         this.receive_message('tw2: ' + data)
+    //     },
+    // },
 
     methods: {
         makeKey,

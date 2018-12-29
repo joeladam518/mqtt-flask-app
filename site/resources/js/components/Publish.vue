@@ -88,7 +88,7 @@ export default {
             console.log('topic: ', this.topic);
             console.log('payload: ', this.payload)
 
-            this.$mqtt.publish(this.topic, this.payload)
+            //this.$mqtt.publish(this.topic, this.payload)
 
             this.clearInputs();
         },

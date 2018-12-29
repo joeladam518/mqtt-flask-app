@@ -4,7 +4,7 @@ import VueMqtt from 'vue-mqtt';
 import VueMqttOptions from './VueMqttOptions.js';
 
 Vue.use(Vuex);
-Vue.use(VueMqtt, 'ws://192.168.1.23:9001', VueMqttOptions);
+//Vue.use(VueMqtt, 'ws://192.168.1.23:9001', VueMqttOptions);
 
 let mqttVuer = new Vue();
 
@@ -22,14 +22,14 @@ const mutations = {
     subscribe(state, topic) {
         let index = state.subscribed_topics.indexOf(topic);
         if (topic && index === -1) {
-            mqttVuer.$mqtt.subscribe(topic)
+            //mqttVuer.$mqtt.subscribe(topic)
             state.subscribed_topics.push(topic)
         }
     },
     unsubscribe(state, topic) {
         let index = state.subscribed_topics.indexOf(topic);
         if (index > -1) {
-            mqttVuer.$mqtt.unsubscribe(topic);
+            //mqttVuer.$mqtt.unsubscribe(topic);
             state.subscribed_topics.splice(index, 1);
         }
     },

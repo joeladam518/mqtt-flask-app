@@ -32,12 +32,9 @@ class MqttController(Resource):
 
     @auth.login_required
     def post(self):
-        # topic = request.form.get('topic')
-        # message = request.form.get('message')
-
         parser = reqparse.RequestParser()
-        parser.add_argument('topic', required=True, location='form', help='No Topic')
-        parser.add_argument('message', required=True, location='form', help='No Payload')
+        parser.add_argument('topic', required=True, location='form', help='No topic.')
+        parser.add_argument('message', required=True, location='form', help='No payload.')
         args = parser.parse_args()
 
         topic = str(args['topic'])
@@ -46,9 +43,9 @@ class MqttController(Resource):
         if not topic or not message:
             return {
                 'status': 'error',
-                'messages': [
-                    'No topic and/or No Payload'
-                ],
+                'message': {
+                    "general": "No topic and/or no payload.",
+                },
             }, 422
 
         """
@@ -60,8 +57,8 @@ class MqttController(Resource):
 
         return {
             'status': 'success',
-            'messages': [
-                'The topic submitted: "{}"'.format(topic),
-                'The payload submitted: "{}"'.format(message),
-            ]
+            'message': {
+                "topic_submitted": "{}".format(topic),
+                "payload_submitted": "{}".format(message),
+            }
         }, 200

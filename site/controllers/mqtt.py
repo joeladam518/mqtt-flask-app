@@ -26,7 +26,7 @@ class MqttController(Resource):
                 "message": {
                     "general": "Endpoint disabled",
                 }
-            }, 200
+            }, 418
 
         parser = reqparse.RequestParser()
         parser.add_argument('topic', required=True, default='', location='form', help='No topic.')

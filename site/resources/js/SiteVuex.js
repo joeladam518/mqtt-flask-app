@@ -4,7 +4,7 @@ import VueMqtt from 'vue-mqtt';
 import VueMqttOptions from './VueMqttOptions.js';
 
 Vue.use(Vuex);
-Vue.use(VueMqtt, 'wss://192.168.1.23:9001', VueMqttOptions);
+Vue.use(VueMqtt, 'ws://192.168.1.23:9001', VueMqttOptions);
 
 let mqttVuer = new Vue();
 

@@ -19,18 +19,6 @@ class MqttController(Resource):
         pass
 
     @auth.login_required
-    def get(self):
-        return {
-            'status': 'success',
-            'messages': [
-                'This endpoint will never do anything.'
-            ],
-            'data': {
-                'requested_topic': '',
-            }
-        }, 200
-
-    @auth.login_required
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('topic', required=True, default='', location='form', help='No topic.')

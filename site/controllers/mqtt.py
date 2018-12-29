@@ -33,8 +33,8 @@ class MqttController(Resource):
     @auth.login_required
     def post(self):
         parser = reqparse.RequestParser()
-        parser.add_argument('topic', required=True, location='form', help='No topic.')
-        parser.add_argument('message', required=True, location='form', help='No payload.')
+        parser.add_argument('topic', required=True, default='', location='form', help='No topic.')
+        parser.add_argument('message', required=True, default='', location='form', help='No payload.')
         args = parser.parse_args()
 
         topic = str(args['topic'])

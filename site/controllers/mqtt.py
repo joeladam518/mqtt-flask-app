@@ -34,7 +34,7 @@ class MqttController(Resource):
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('topic', required=True, location='form', help='No topic.')
-        parser.add_argument('message', required=True, location='form', dest='payload', help='No payload.')
+        parser.add_argument('message', required=True, location='form', help='No payload.')
         args = parser.parse_args()
 
         topic = str(args['topic'])

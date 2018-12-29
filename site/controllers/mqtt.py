@@ -20,9 +20,12 @@ class MqttController(Resource):
 
     @auth.login_required
     def post(self):
-        if os.getenv('MQTT_ENDPOINT_DISABLED') == True:
+        if os.getenv('MQTT_ENDPOINT_DISABLED') == 'True':
             return {
-                "message": "Endpoint disabled",
+                "status": "error",
+                "message": {
+                    "general": "Endpoint disabled",
+                }
             }, 200
 
         parser = reqparse.RequestParser()

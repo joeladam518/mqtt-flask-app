@@ -1,6 +1,6 @@
 import os
 from flask import request
-from flask_restful import Resource # import Resource, reqparse
+from flask_restful import Resource, reqparse
 from flask_httpauth import HTTPTokenAuth
 import paho.mqtt.publish as publish
 
@@ -32,25 +32,24 @@ class MqttController(Resource):
 
     @auth.login_required
     def post(self):
+        # topic = request.form.get('topic')
+        # message = request.form.get('message')
 
-        topic = request.form.get('topic')
-        message = request.form.get('message')
+        # if not topic and not message:
+        #     return {
+        #         'status': 'error',
+        #         'messages': [
+        #             'No topic and/or No message'
+        #         ],
+        #     }, 422
 
-        # parser = reqparse.RequestParser()
-        # parser.add_argument('topic', required=True, help='Topic is required')
-        # parser.add_argument('message', required=True, help='Message is required')
-        # args = parser.parse_args()
+        parser = reqparse.RequestParser()
+        parser.add_argument('topic', required=True, location='form', help='No Topic')
+        parser.add_argument('message', required=True, location='form', help='No Payload')
+        args = parser.parse_args()
 
-        if not topic and not message:
-            return {
-                'status': 'error',
-                'messages': [
-                    'No topic and/or No message'
-                ],
-            }, 422
-
-        topic = str(topic)
-        mesage = str(message)
+        topic = str(args['topic'])
+        mesage = str(args['message'])
 
         """
             mqtt.publish.single(topic, payload=None, qos=0, retain=False, hostname="localhost",

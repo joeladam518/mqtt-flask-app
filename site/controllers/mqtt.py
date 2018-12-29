@@ -35,21 +35,21 @@ class MqttController(Resource):
         # topic = request.form.get('topic')
         # message = request.form.get('message')
 
-        # if not topic and not message:
-        #     return {
-        #         'status': 'error',
-        #         'messages': [
-        #             'No topic and/or No message'
-        #         ],
-        #     }, 422
-
         parser = reqparse.RequestParser()
-        parser.add_argument('topic', required=True, location='form', nullable=False, help='No Topic')
-        parser.add_argument('message', required=True, location='form', nullable=False, help='No Payload')
+        parser.add_argument('topic', required=True, location='form', help='No Topic', nullable=False)
+        parser.add_argument('message', required=True, location='form', help='No Payload', nullable=False)
         args = parser.parse_args()
 
         topic = str(args['topic'])
         message = str(args['message'])
+
+        if not topic or not message:
+            return {
+                'status': 'error',
+                'messages': [
+                    'No topic and/or No message'
+                ],
+            }, 422
 
         """
             mqtt.publish.single(topic, payload=None, qos=0, retain=False, hostname="localhost",
